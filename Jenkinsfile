@@ -20,7 +20,8 @@ pipeline {
 
         stage('Build') {
             steps{
-            sh 'docker build -t veer45/devops-task:latest .'
+                sh export PATH=$PATH:/usr/local/bin
+                sh 'docker build -t veer45/devops-task:latest .'
             }
         }
         
@@ -31,6 +32,7 @@ pipeline {
                                                  usernameVariable: 'DOCKER_USER', 
                                                  passwordVariable: 'DOCKER_PASS')]) {
                     sh '''
+                    export PATH=$PATH:/usr/local/bin
                     echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
                     docker push veer45/devops-task:latest
                     '''
