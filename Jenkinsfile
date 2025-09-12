@@ -19,7 +19,9 @@ pipeline {
         }
 
         stage('Build') {
+            steps{
             sh 'docker build -t veer45/devops-task:latest .'
+            }
         }
         
 
