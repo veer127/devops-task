@@ -16,13 +16,13 @@ pipeline {
         }
 
         stage('Build') {
-    tools { nodejs "node18" }
-    steps {
-        sh 'npm install'
-        sh 'npm test || echo "No tests configured"'
-    }
-}
+            tools { nodejs "node18" }
+            steps {
+                sh 'npm install'
+                sh 'npm test || echo "No tests configured"'
+            }
         }
+        
 
         stage('Push Image') {
             steps {
