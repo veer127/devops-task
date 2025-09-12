@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     
-
+//added env variable
      environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerhubaws') // Jenkins secret ID
         IMAGE_NAME = "veer45/devops-task:latest"
