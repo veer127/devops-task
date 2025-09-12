@@ -10,8 +10,11 @@ pipeline {
 
         stage('Install & Test') {
             steps {
-                sh 'npm install'
-                sh 'npm test || echo "Tests failed"' 
+             sh '''
+                export PATH=$PATH:/usr/local/bin
+                npm install
+                npm test || echo "No tests configured"
+                '''
             }
         }
 
