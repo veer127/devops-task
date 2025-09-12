@@ -19,17 +19,20 @@ pipeline {
         }
 
         stage('Build') {
-            tools { nodejs "node18" }
-            steps {
-                sh 'npm install'
-                sh 'npm test || echo "No tests configured"'
-            }
+            sh 'docker build -t veer45/devops-task:latest .'
         }
         
 
         stage('Push Image') {
             steps {
-                echo "push to DockerHub"
+                withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', 
+                                                 usernameVariable: 'DOCKER_USER', 
+                                                 passwordVariable: 'DOCKER_PASS')]) {
+                    sh '''
+                    echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+                    docker push veer45/devops-task:latest
+                    '''
+                }
             }
         }
 
