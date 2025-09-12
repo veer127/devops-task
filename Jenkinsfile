@@ -20,8 +20,10 @@ pipeline {
 
         stage('Build') {
             steps{
-                sh export PATH=$PATH:/usr/local/bin
-                sh 'docker build -t veer45/devops-task:latest .'
+                sh ''' 
+                export PATH=$PATH:/usr/local/bin
+                docker build -t veer45/devops-task:latest .
+                '''
             }
         }
         
