@@ -1,6 +1,18 @@
 pipeline {
     agent any
 
+    
+
+     environment {
+        DOCKERHUB_CREDENTIALS = credentials('dockerhubaws') // Jenkins secret ID
+        IMAGE_NAME = "veer45/devops-task:latest"
+    }
+
+
+
+
+
+    
     stages {
         stage('Checkout') {
             steps {
