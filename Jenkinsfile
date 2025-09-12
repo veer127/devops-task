@@ -15,14 +15,13 @@ pipeline {
             }
         }
 
-        stage('Docker Build') {
-            steps {
-        sh '''
-        export PATH=$PATH:/usr/local/bin
-        npm install
-        npm test || echo "No tests configured"
-        '''
+        stage('Build') {
+    tools { nodejs "node18" }
+    steps {
+        sh 'npm install'
+        sh 'npm test || echo "No tests configured"'
     }
+}
         }
 
         stage('Push Image') {
