@@ -36,7 +36,7 @@ Before you begin, ensure you have the following ready:
 1.  **Clone the repository**
 
     ```bash
-    git clone https://github.com/your-username/devops-task.git
+    git clone https://github.com/veer127/devops-task.git
     cd devops-task
     ```
 
