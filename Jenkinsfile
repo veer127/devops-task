@@ -59,9 +59,13 @@ pipeline {
         }
 
         stage('Deploy') {
-            steps {
-                echo "deploy container to Cloud"
-            }
-        }
+              steps {
+                    sh '''
+                    docker stop devops-task || true
+                    docker rm devops-task || true
+                    docker run -d -p 3000:3000 --name devops-task veer45/devops-task:latest
+                    '''
+    }
+}
     }
 }
