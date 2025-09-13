@@ -111,3 +111,19 @@ This pipeline integrates with **AWS CloudWatch** to provide real-time monitoring
   * The Jenkins credentials feature is crucial for securely handling sensitive information like your DockerHub login.
   * The pipeline supports **re-deployment without downtime** by stopping the old container before starting the new one, ensuring a clean and reliable update.
   * CloudWatch logs are invaluable for **debugging and monitoring** the health of the application in a production environment.
+
+## 7\. Challenges & Improvements
+
+### Challenges Faced
+- Docker permissions on EC2 preventing non-root usage.
+- Jenkins configuration for Node.js and Docker tools.
+- CloudWatch agent credential setup issues on EC2.
+- Deciding between AWS ECS, Google Cloud Run, or Kubernetes for deployment.
+
+### Possible Improvements
+- Deploy using **AWS ECS Fargate**, **Google Cloud Run**, or **Kubernetes (EKS/GKE)** for better scalability.
+- Implement **Infrastructure as Code (IaC)** using **Terraform** to automate cloud resources, including CloudWatch agent installation.
+- Add automated **Node.js testing** in Jenkins pipeline.
+- Optimize Docker images for smaller size and faster builds.
+- Configure monitoring dashboards and alerts for application metrics.
+
