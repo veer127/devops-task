@@ -2,15 +2,11 @@ pipeline {
     agent any
 
     
-//added env variable
+//environment variable
      environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerhubaws') // Jenkins secret ID
         IMAGE_NAME = "veer45/devops-task:latest"
     }
-
-
-
-
 
     
     stages {
@@ -22,15 +18,8 @@ pipeline {
 
         stage('Install & Test') {
             steps {
-
-
                  sh 'export PATH=$PATH:/usr/bin:/usr/local/bin && npm install'
                  sh 'export PATH=$PATH:/usr/bin:/usr/local/bin && npm test || echo "No tests configured"'
-           //  sh '''
-              //  export PATH=$PATH:/usr/local/bin
-              //  npm install
-              //  npm test || echo "No tests configured"
-              //  '''
             }
         }
 
